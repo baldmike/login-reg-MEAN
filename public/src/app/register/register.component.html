@@ -1,0 +1,310 @@
+<div class="row">
+    <div class="col-md-12">
+      <app-navbar></app-navbar>
+    </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="jumbotron infoBox">
+      <h1>LogIn | LogUp</h1>
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-md-12">
+  <!-- LOGIN -->
+    <div class="col-md-6">
+      <form (submit)="loginUser()" #loginForm="ngForm" class="form-horizontal">
+        <h1>LogIn</h1>
+          <div *ngIf="pwError" [ngStyle]="{'text-align': 'center'}" class='errors'>Incorrect password.Please try again.</div>
+          <div *ngIf="emailError" [ngStyle]="{'text-align': 'center'}" class='errors'>User does not exist. Please register.</div>
+        <div class="form-group">
+          <label class="control-label col-sm-2" for="email">----></label>
+          <div class="col-sm-10">
+            <input 
+              type="email"
+              autofocus
+              required
+              class="form-control" 
+              name="email" 
+              placeholder="Enter email"
+              [(ngModel)]="login.email"
+              #loginEmail="ngModel">
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <label class="control-label col-sm-2" for="password">----></label>
+          <div class="col-sm-10"> 
+            <input 
+              type="password" 
+              class="form-control" 
+              name="password" 
+              placeholder="Enter password"
+              [(ngModel)]="login.password" 
+              #loginPassword="ngModel">
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <input 
+              type="submit" 
+              class="btn btn-default"
+              value="login"
+              [disabled]="!loginForm.valid">
+          </div>
+        </div>
+      </form>
+    </div>
+  
+
+
+
+
+    <!-- REGISTER -->
+    <div class="col-md-6">
+      <form (submit)='createUser()' #formData='ngForm' class="form-horizontal">
+        <h1>LogUp</h1>
+        <!-- FIRST NAME -->
+        <div class="form-group">
+          <span *ngIf="firstName.errors"><label class="control-label col-sm-2" for="firstName">----></label></span>
+          <span *ngIf="!firstName.errors"><label class="control-label col-sm-2" for="firstName">-OK-></label></span>
+          <div class="col-sm-10">
+            <input
+              autofocus
+              type="text" 
+              required
+              class="form-control" 
+              name="firstName" 
+              placeholder="first name"
+              minlength="2"
+              maxlength="30"
+              [(ngModel)]="user.firstName"
+              #firstName="ngModel">
+          </div>
+        </div>
+
+        <!-- LAST NAME -->
+        <div class="form-group">
+            <span *ngIf="lastName.errors"><label class="control-label col-sm-2" for="lastName">----></label></span>
+            <span *ngIf="!lastName.errors"><label class="control-label col-sm-2" for="lastName">-OK-></label></span>
+          <div class="col-sm-10">
+            <input 
+              type="text"
+              required 
+              class="form-control" 
+              name="lastName" 
+              placeholder="last name"
+              minlength="2"
+              maxlength="30"
+              [(ngModel)]="user.lastName"
+              #lastName="ngModel">
+          </div>
+        </div>
+        
+        <!-- STREET ADDRESS -->
+        <div class="form-group">
+            <span *ngIf="address.errors"><label class="control-label col-sm-2" for="address">----></label></span>
+            <span *ngIf="!address.errors"><label class="control-label col-sm-2" for="address">-OK-></label></span>
+          <div class="col-sm-10">
+            <input 
+              type="text"
+              required 
+              class="form-control" 
+              name="address" 
+              placeholder="Street Address"
+              minlength="5"
+              maxlength="30"
+              [(ngModel)]="user.address"
+              #address="ngModel">
+          </div>
+        </div>
+
+        <!-- CITY -->
+        <div class="form-group">
+            <span *ngIf="city.errors"><label class="control-label col-sm-2" for="city">----></label></span>
+            <span *ngIf="!city.errors"><label class="control-label col-sm-2" for="city">-OK-></label></span>
+          <div class="col-sm-10">
+            <input 
+              type="text"
+              required
+              class="form-control" 
+              name="city" 
+              placeholder="City"
+              minlength="2"
+              maxlength="30"
+              [(ngModel)]="user.city"
+              #city="ngModel">
+          </div>
+        </div>
+
+        <!-- STATE -->
+        <div class="form-group">
+            <span *ngIf="state.errors"><label class="control-label col-sm-2" for="state">----></label></span>
+            <span *ngIf="!state.errors"><label class="control-label col-sm-2" for="state">-OK-></label></span>
+          <div class="col-sm-10">
+            <select
+              name="state"
+              required
+              class="form-control"
+              [(ngModel)]="user.state"
+              #state="ngModel">
+              <option value="" disabled selected>State</option>
+              <option value="AL">Alabama</option>
+              <option value="AK">Alaska</option>
+              <option value="AZ">Arizona</option>
+              <option value="AR">Arkansas</option>
+              <option value="CA">California</option>
+              <option value="CO">Colorado</option>
+              <option value="CT">Connecticut</option>
+              <option value="DE">Delaware</option>
+              <option value="DC">District of Columbia</option>
+              <option value="FL">Florida</option>
+              <option value="GA">Georgia</option>
+              <option value="HI">Hawaii</option>
+              <option value="ID">Idaho</option>
+              <option value="IL">Illinois</option>
+              <option value="IN">Indiana</option>
+              <option value="IA">Iowa</option>
+              <option value="KS">Kansas</option>
+              <option value="KY">Kentucky</option>
+              <option value="LA">Louisiana</option>
+              <option value="ME">Maine</option>
+              <option value="MD">Maryland</option>
+              <option value="MA">Massachusetts</option>
+              <option value="MI">Michigan</option>
+              <option value="MN">Minnesota</option>
+              <option value="MS">Mississippi</option>
+              <option value="MO">Missouri</option>
+              <option value="MT">Montana</option>
+              <option value="NE">Nebraska</option>
+              <option value="NV">Nevada</option>
+              <option value="NH">New Hampshire</option>
+              <option value="NJ">New Jersey</option>
+              <option value="NM">New Mexico</option>
+              <option value="NY">New York</option>
+              <option value="NC">North Carolina</option>
+              <option value="ND">North Dakota</option>
+              <option value="OH">Ohio</option>
+              <option value="OK">Oklahoma</option>
+              <option value="OR">Oregon</option>
+              <option value="PA">Pennsylvania</option>
+              <option value="RI">Rhode Island</option>
+              <option value="SC">South Carolina</option>
+              <option value="SD">South Dakota</option>
+              <option value="TN">Tennessee</option>
+              <option value="TX">Texas</option>
+              <option value="UT">Utah</option>
+              <option value="VT">Vermont</option>
+              <option value="VA">Virginia</option>
+              <option value="WA">Washington</option>
+              <option value="WV">West Virginia</option>
+              <option value="WI">Wisconsin</option>
+              <option value="WY">Wyoming</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- ZIP CODE -->
+        <div class="form-group">
+            <span *ngIf="zipCode.errors"><label class="control-label col-sm-2" for="zipCode">----></label></span>
+            <span *ngIf="!zipCode.errors"><label class="control-label col-sm-2" for="zipCode">-OK-></label></span>
+          <div class="col-sm-10">
+            <input 
+              type="number"
+              required
+              class="form-control" 
+              name="zipCode" 
+              placeholder="Zip Code"
+              minlength="5"
+              maxlength="5"
+              [(ngModel)]="user.zipCode"
+              #zipCode="ngModel">
+          </div>
+        </div>
+
+        <div class="form-group">
+            <span *ngIf="birthdate.errors"><label class="control-label col-sm-2" for="birthdate">----></label></span>
+            <span *ngIf="!birthdate.errors"><label class="control-label col-sm-2" for="birthdate">-OK-></label></span>
+          <div class="col-sm-10">
+            <input 
+              required
+              max="1999-01-01"
+              class="form-control" 
+              name="birthdate" 
+              placeholder="Enter date of birth"
+              placeholder="birthdate" 
+              onfocus="(this.type='date')"
+              [(ngModel)]="user.birthdate"
+              #birthdate="ngModel">
+          </div>
+        </div>
+        
+        <div class="form-group">
+            <span *ngIf="email.errors"><label class="control-label col-sm-2" for="email">----></label></span>
+            <span *ngIf="!email.errors"><label class="control-label col-sm-2" for="email">-OK-></label></span>
+          <div class="col-sm-10">
+            <input 
+              type="text" 
+              class="form-control" 
+              name="email" 
+              pattern="^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$" 
+              required minlength="5" 
+              maxlength="30"
+              placeholder="Enter email"
+              required
+              [(ngModel)]="user.email" 
+              #email='ngModel'>
+          </div>
+        </div>
+
+        <div class="form-group">
+            <span *ngIf="password.errors"><label class="control-label col-sm-2" for="password">----></label></span>
+            <span *ngIf="!password.errors"><label class="control-label col-sm-2" for="password">-OK-></label></span>
+          <div class="col-sm-10"> 
+            <input 
+              type="password" 
+              class="form-control" 
+              name="password" 
+              required
+              placeholder="Enter password" 
+              minlength="8" 
+              maxlength="32"  
+              pattern="^([a-zA-Z0-9@*#]{8,32})$"
+              [(ngModel)]="user.password"
+              #password='ngModel'>
+          </div>
+        </div>
+        <div class="form-group">
+            <span *ngIf="confirm.errors"><label class="control-label col-sm-2" for="confirm">----></label></span>
+            <span *ngIf="!confirm.errors"><label class="control-label col-sm-2" for="confirm">-OK-></label></span>
+          <div class="col-sm-10"> 
+            <input 
+              class="form-control" 
+              type="password" 
+              name="confirm"
+              placeholder="Confirm password"
+              required minlength="8" 
+              maxlength="32"  
+              [(ngModel)]="user.confirm" 
+              pattern="^([a-zA-Z0-9]{8,32})$" 
+              #confirm='ngModel'>
+              <div class='errors' *ngIf="user.confirm !== user.password">Passwords must match.</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <input 
+              type="submit" 
+              class="btn btn-default" [disabled]="user.confirm !== user.password || !formData.valid"
+              value="Register">
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

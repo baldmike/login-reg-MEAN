@@ -1,0 +1,15 @@
+<div class="row">
+    <div class="col-md-12">
+      <app-navbarloggedin></app-navbarloggedin>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-md-12">
+      <div class="jumbotron infoBox">
+          <h1 class="center" *ngIf="user.firstName">Hello, {{ user.firstName }} {{ user.lastName }}!</h1>
+          <h3 class="center" *ngIf="!user.firstName">WARNING: You are not authorized to view this site. Please log in.</h3>
+      </div>
+    </div>
+  </div>
+  
